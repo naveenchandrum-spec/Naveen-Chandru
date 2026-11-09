@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naveen Chandru — IT Student &amp; Aspiring Software Developer</title>
+<meta name="description" content="Portfolio of Naveen Chandru, third-year B.Tech Information Technology student learning frontend development and UI/UX design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* ===== Change the whole colour scheme here ===== */
+  --bg:#0c0c0e; --surface:#141417; --surface2:#1b1b1f; --line:#2a2a30;
+  --text:#f3f3ee; --muted:#9b9ba5; --accent:#d4ff3f; --accent-ink:#0c0c0e;
+  --head:"Space Grotesk",system-ui,sans-serif; --body:Inter,system-ui,sans-serif;
+  --r:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--text);font:400 16px/1.7 var(--body);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1120px,92%);margin:auto}
+section{padding:96px 0}
+h1,h2,h3{font-family:var(--head);line-height:1.1;letter-spacing:-.02em}
+h2{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:14px}
+.tag{display:inline-block;font:600 .78rem var(--head);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.tag::before{content:"";display:inline-block;width:26px;height:2px;background:var(--accent);vertical-align:middle;margin-right:10px}
+.lead{color:var(--muted);max-width:640px}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:99}
+#glow{position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:0;left:0;top:0;
+  background:radial-gradient(circle,rgba(212,255,63,.09),transparent 65%);transform:translate(-50%,-50%)}
+main,header,footer{position:relative;z-index:1}
+
+/* nav */
+header{position:fixed;top:0;left:0;right:0;z-index:50;transition:.3s}
+header.s{background:rgba(12,12,14,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav{display:flex;justify-content:space-between;align-items:center;height:74px}
+.logo{font:700 1.3rem var(--head)}.logo span{color:var(--accent)}
+.links{display:flex;gap:6px;list-style:none;align-items:center}
+.links a{padding:8px 14px;border-radius:99px;font-size:.92rem;color:var(--muted);transition:.25s}
+.links a:hover,.links a.on{color:var(--text);background:var(--surface2)}
+.links .cta{background:var(--accent);color:var(--accent-ink);font-weight:600}
+.links .cta:hover{background:var(--accent);color:var(--accent-ink);transform:translateY(-2px)}
+#burger{display:none;background:none;border:1px solid var(--line);color:var(--text);width:44px;height:44px;border-radius:12px;font-size:1.3rem;cursor:pointer}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:99px;font:600 .95rem var(--head);border:1px solid var(--line);cursor:pointer;transition:.3s;background:none;color:var(--text)}
+.btn.p{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px -10px rgba(212,255,63,.35)}
+.btn.g:hover{border-color:var(--accent);color:var(--accent)}
+
+/* hero */
+#home{min-height:100vh;display:flex;align-items:center;padding:130px 0 70px}
+.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:50px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border:1px solid var(--line);border-radius:99px;font-size:.85rem;color:var(--muted);margin-bottom:26px;background:var(--surface)}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+h1{font-size:clamp(2.8rem,8vw,5.8rem);margin-bottom:20px}
+h1 em{font-style:normal;color:var(--accent)}
+.role{font:500 clamp(1.1rem,2.6vw,1.5rem) var(--head);margin-bottom:18px;min-height:2.2em}
+.role b{color:var(--accent);font-weight:600}
+.role .c{display:inline-block;width:2px;height:1.1em;background:var(--accent);vertical-align:-3px;margin-left:3px;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.meta{color:var(--muted);margin-bottom:34px;max-width:560px}
+.row{display:flex;gap:14px;flex-wrap:wrap}
+.avatar{position:relative;aspect-ratio:1;max-width:340px;width:100%;margin:auto;display:grid;place-items:center}
+.avatar::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px dashed var(--line);animation:spin 30s linear infinite}
+.avatar::after{content:"";position:absolute;inset:9%;border-radius:50%;border:1px solid var(--accent);opacity:.5}
+@keyframes spin{to{transform:rotate(360deg)}}
+.mono{width:72%;aspect-ratio:1;border-radius:50%;background:linear-gradient(145deg,var(--surface2),var(--surface));display:grid;place-items:center;font:700 clamp(3.5rem,9vw,5.5rem) var(--head);animation:float 6s ease-in-out infinite;border:1px solid var(--line)}
+.mono span{color:var(--accent)}
+@keyframes float{50%{transform:translateY(-14px)}}
+.chip-f{position:absolute;padding:8px 14px;border-radius:99px;background:var(--surface2);border:1px solid var(--line);font:600 .78rem var(--head);animation:float 5s ease-in-out infinite}
+.chip-f:nth-of-type(1){top:6%;right:-4%}.chip-f:nth-of-type(2){bottom:14%;left:-6%;animation-delay:-2s}.chip-f:nth-of-type(3){bottom:2%;right:6%;animation-delay:-3.5s}
+
+/* marquee */
+.mq{border-block:1px solid var(--line);overflow:hidden;padding:18px 0;background:var(--surface)}
+.mq div{display:flex;gap:46px;width:max-content;animation:mq 28s linear infinite;font:600 1.15rem var(--head);color:var(--muted)}
+.mq span::after{content:"✦";color:var(--accent);margin-left:46px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* cards */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:30px;transition:border-color .3s,transform .2s;transform-style:preserve-3d}
+.card:hover{border-color:var(--accent)}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}
+.ic{width:48px;height:48px;border-radius:14px;background:var(--surface2);display:grid;place-items:center;font-size:1.4rem;margin-bottom:18px}
+.card h3{font-size:1.2rem;margin-bottom:8px}.card p{color:var(--muted);font-size:.95rem}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.stat{text-align:center;padding:26px 10px}
+.stat strong{display:block;font:700 2.6rem var(--head);color:var(--accent)}
+.stat span{color:var(--muted);font-size:.9rem}
+
+/* skills */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 30px}
+.tab{padding:9px 20px;border-radius:99px;border:1px solid var(--line);background:none;color:var(--muted);font:500 .9rem var(--body);cursor:pointer;transition:.25s}
+.tab.on,.tab:hover{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.sk{transition:.4s}.sk.h{display:none}
+.lvl{display:inline-block;margin-top:14px;padding:4px 12px;border-radius:99px;background:var(--surface2);font-size:.78rem;color:var(--accent)}
+.meter{height:6px;background:var(--surface2);border-radius:9px;margin-top:16px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--accent);border-radius:9px;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.vis .meter i{width:var(--w)}
+
+/* timeline */
+.tl{border-left:2px solid var(--line);padding-left:34px;position:relative}
+.tl::before{content:"";position:absolute;left:-8px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px rgba(212,255,63,.15)}
+.tl small{color:var(--accent);font:600 .85rem var(--head);letter-spacing:.06em}
+.tl h3{font-size:1.5rem;margin:6px 0}
+
+/* goal */
+.goal{text-align:center;padding:60px 30px;background:linear-gradient(135deg,var(--surface),var(--surface2))}
+.goal q{display:block;font:600 clamp(1.3rem,3vw,2rem)/1.35 var(--head);max-width:820px;margin:16px auto 0;quotes:none}
+.langs{display:flex;gap:10px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+.langs span{padding:8px 20px;border-radius:99px;border:1px solid var(--line);font-size:.9rem}
+
+/* contact */
+.contact{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px}
+form{display:grid;gap:14px}
+input,textarea{width:100%;padding:15px 18px;background:var(--surface2);border:1px solid var(--line);border-radius:14px;color:var(--text);font:inherit;transition:.25s}
+input:focus,textarea:focus{outline:none;border-color:var(--accent)}
+textarea{min-height:140px;resize:vertical}
+.soc{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.soc a{padding:9px 18px;border:1px solid var(--line);border-radius:99px;font-size:.9rem;transition:.25s}
+.soc a:hover{border-color:var(--accent);color:var(--accent)}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+#top{position:fixed;right:22px;bottom:22px;width:48px;height:48px;border-radius:50%;border:none;background:var(--accent);color:var(--accent-ink);font-size:1.2rem;cursor:pointer;opacity:0;pointer-events:none;transition:.3s;z-index:60}
+#top.s{opacity:1;pointer-events:auto}
+
+.rv{opacity:0;transform:translateY(34px);transition:opacity .8s,transform .8s}
+.rv.vis{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .hero,.about,.contact,.g3{grid-template-columns:1fr}.g3{grid-template-columns:repeat(2,1fr)}
+  .avatar{max-width:260px;order:-1}
+  #burger{display:block}
+  .links{position:fixed;inset:74px 0 auto 0;flex-direction:column;background:var(--bg);padding:20px;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:.4s;gap:4px}
+  .links.o{transform:none}.links a{display:block;padding:14px;text-align:center}
+}
+@media(max-width:600px){section{padding:70px 0}.g2,.g3{grid-template-columns:1fr}.btn{width:100%;justify-content:center}.chip-f{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="bar"></div><div id="glow"></div>
+
+<header id="hd"><div class="wrap"><nav>
+  <a href="#home" class="logo">naveen<span>.</span></a>
+  <button id="burger" aria-label="Menu">☰</button>
+  <ul class="links" id="links">
+    <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li><li><a href="#growth">Growth</a></li>
+    <li><a href="#contact" class="cta">Let’s talk</a></li>
+  </ul>
+</nav></div></header>
+
+<main>
+<section id="home"><div class="wrap hero">
+  <div>
+    <div class="pill rv"><i></i> Open to learning &amp; collaboration</div>
+    <h1 class="rv">Hi, I’m <em>Naveen Chandru</em></h1>
+    <p class="role rv">Information Technology Student · <b id="typed"></b><span class="c"></span></p>
+    <p class="meta rv">Aralvaimozhi, Tamil Nadu, India • B.Tech Information Technology, Third Year • Expected graduation 2028</p>
+    <div class="row rv"><a href="#about" class="btn p">Explore my profile →</a><a href="#contact" class="btn g">Get in touch</a></div>
+  </div>
+  <div class="avatar rv">
+    <div class="mono">N<span>C</span></div>
+    <span class="chip-f">&lt;/&gt; Frontend</span><span class="chip-f">UI / UX</span><span class="chip-f">IoT</span>
+  </div>
+</div></section>
+
+<div class="mq"><div id="mq"></div></div>
+
+<section id="about"><div class="wrap about">
+  <div class="rv">
+    <span class="tag">About me</span>
+    <h2>Curious about how technology works.</h2>
+    <p class="lead">I’m a third-year Information Technology student at DMI Engineering College, building my technical foundation through continued learning and exploration. I’m currently learning frontend development and I’m interested in creating useful, user-friendly technology solutions.</p>
+    <p class="lead" style="margin-top:14px">I enjoy exploring new tools and I’m working toward a career in software development.</p>
+  </div>
+  <div class="stats rv">
+    <div class="card stat"><strong data-n="3">0</strong><span>Year of B.Tech</span></div>
+    <div class="card stat"><strong data-n="2028">0</strong><span>Graduation</span></div>
+    <div class="card stat"><strong data-n="2">0</strong><span>Languages</span></div>
+    <div class="card stat"><strong data-n="5">0</strong><span>Tech interest areas</span></div>
+  </div>
+</div></section>
+
+<section id="skills" style="background:var(--surface)"><div class="wrap">
+  <div class="rv"><span class="tag">Skills &amp; current learning</span><h2>What I’m building on.</h2>
+  <p class="lead">I’m still growing, and I’m open about it. Here’s where I am right now.</p></div>
+  <div class="tabs rv" id="tabs">
+    <button class="tab on" data-f="all">All</button><button class="tab" data-f="web">Web</button>
+    <button class="tab" data-f="design">Design</button><button class="tab" data-f="tools">Tools</button><button class="tab" data-f="int">Interests</button>
+  </div>
+  <div class="grid g3" id="sg">
+    <div class="card sk rv" data-c="web"><div class="ic">🌐</div><h3>HTML, CSS &amp; JavaScript</h3><p>Web fundamentals that every interface is built on.</p><div class="meter" style="--w:45%"><i></i></div><span class="lvl">Learning</span></div>
+    <div class="card sk rv" data-c="web"><div class="ic">💻</div><h3>Frontend Development</h3><p>Turning designs into responsive, working pages.</p><div class="meter" style="--w:40%"><i></i></div><span class="lvl">Currently learning</span></div>
+    <div class="card sk rv" data-c="design"><div class="ic">🎨</div><h3>UI / UX Design</h3><p>User interface design with a focus on clarity and usability.</p><div class="meter" style="--w:40%"><i></i></div><span class="lvl">Learning &amp; exploring</span></div>
+    <div class="card sk rv" data-c="tools"><div class="ic">🛠️</div><h3>Visual Studio Code</h3><p>My everyday editor for writing and testing code.</p><span class="lvl">Tool</span></div>
+    <div class="card sk rv" data-c="tools"><div class="ic">🔌</div><h3>Arduino IDE</h3><p>For hands-on work with microcontrollers and hardware.</p><span class="lvl">Tool</span></div>
+    <div class="card sk rv" data-c="tools"><div class="ic">📱</div><h3>Android Studio</h3><p>Getting started with mobile app tooling.</p><span class="lvl">Exploring</span></div>
+    <div class="card sk rv" data-c="int"><div class="ic">🔐</div><h3>Cybersecurity</h3><p>Understanding how systems are protected.</p><span class="lvl">Interest</span></div>
+    <div class="card sk rv" data-c="int"><div class="ic">📡</div><h3>Networking Fundamentals</h3><p>How devices and data connect and communicate.</p><span class="lvl">Interest</span></div>
+    <div class="card sk rv" data-c="int"><div class="ic">🤖</div><h3>IoT &amp; Embedded Systems</h3><p>Smart, connected hardware.</p><span class="lvl">Interest</span></div>
+    <div class="card sk rv" data-c="int"><div class="ic">🔧</div><h3>Mobile Hardware Troubleshooting</h3><p>Diagnosing how phone hardware behaves.</p><span class="lvl">Interest</span></div>
+  </div>
+</div></section>
+
+<section id="education"><div class="wrap">
+  <div class="rv"><span class="tag">Education</span><h2>My academic path.</h2></div>
+  <div class="tl rv" style="margin-top:36px">
+    <small>EXPECTED GRADUATION · 2028</small>
+    <h3>Bachelor of Technology (B.Tech) in Information Technology</h3>
+    <p class="lead">DMI Engineering College, Aralvaimozhi · Third year</p>
+  </div>
+  <div class="grid g2" style="margin-top:50px">
+    <div class="card rv"><div class="ic">🎯</div><h3>Career interests</h3><p>Software development, frontend and full stack development, UI/UX design, cybersecurity, and the broader IT field.</p></div>
+    <div class="card rv"><div class="ic">🤝</div><h3>How I hope to contribute</h3><p>I’m looking to build practical experience, support development work as my skills grow, and collaborate with others on technology projects, with a positive learning mindset and a willingness to take on challenges.</p></div>
+  </div>
+</div></section>
+
+<section id="growth" style="background:var(--surface)"><div class="wrap">
+  <div class="rv"><span class="tag">Strengths</span><h2>How I work.</h2></div>
+  <div class="grid g3" style="margin-top:30px">
+    <div class="card rv"><div class="ic">🌱</div><h3>Self-motivated learner</h3><p>Curious and driven to figure things out.</p></div>
+    <div class="card rv"><div class="ic">🧩</div><h3>Problem-solving</h3><p>Interested in problem-solving and creative work.</p></div>
+    <div class="card rv"><div class="ic">🔄</div><h3>Adaptable</h3><p>Open to new challenges and new tools.</p></div>
+    <div class="card rv"><div class="ic">📈</div><h3>Continuous improvement</h3><p>Committed to getting a little better every day.</p></div>
+    <div class="card rv"><div class="ic">👥</div><h3>Teamwork</h3><p>Interested in collaboration and learning from others.</p></div>
+    <div class="card rv"><div class="ic">🗣️</div><h3>Languages</h3><p>Tamil and English.</p></div>
+  </div>
+  <div class="card goal rv" style="margin-top:50px">
+    <span class="tag">Professional goal</span>
+    <q>To grow into a skilled IT professional and software developer, applying my academic knowledge, developing practical abilities, and contributing to reliable, user-friendly solutions for real-world needs.</q>
+    <div class="langs"><span>Tamil</span><span>English</span></div>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap contact">
+  <div class="rv">
+    <span class="tag">Contact</span><h2>Let’s build something together.</h2>
+    <p class="lead">Have an opportunity, a project idea, or just want to say hello? Send a message and it will open in your email app.</p>
+    <p class="lead" style="margin-top:14px">📍 Aralvaimozhi, Tamil Nadu, India</p>
+    <div class="soc" id="soc"></div>
+  </div>
+  <form class="card rv" id="form">
+    <input id="fn" placeholder="Your name" required>
+    <input id="fe" type="email" placeholder="Your email" required>
+    <textarea id="fm" placeholder="Your message" required></textarea>
+    <button class="btn p" type="submit">Send message →</button>
+  </form>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>© <span id="yr"></span> Naveen Chandru</span><span>Designed &amp; built with HTML, CSS &amp; JavaScript</span></div></footer>
+<button id="top" aria-label="Back to top">↑</button>
+
+<script>
+/* ===== EDIT YOUR DETAILS HERE ===== */
+const CONFIG={
+  email:"your-email@example.com",   // put your real email
+  social:{ GitHub:"", LinkedIn:"", Instagram:"" }  // paste profile URLs; empty ones are hidden
+};
+/* ================================== */
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+$("#yr").textContent=new Date().getFullYear();
+
+// marquee
+const words=["HTML","CSS","JavaScript","Frontend","UI/UX","Cybersecurity","Networking","IoT","Embedded Systems","Arduino","VS Code"];
+$("#mq").innerHTML=[...words,...words].map(w=>`<span>${w}</span>`).join("");
+
+// socials
+const soc=Object.entries(CONFIG.social).filter(([,u])=>u);
+$("#soc").innerHTML=soc.map(([n,u])=>`<a href="${u}" target="_blank" rel="noopener">${n} ↗</a>`).join("");
+
+// nav
+const hd=$("#hd"),links=$("#links"),top=$("#top");
+$("#burger").onclick=()=>links.classList.toggle("o");
+links.onclick=e=>{if(e.target.tagName==="A")links.classList.remove("o")};
+top.onclick=()=>scrollTo({top:0,behavior:"smooth"});
+const secs=$$("main section[id]");
+addEventListener("scroll",()=>{
+  const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
+  $("#bar").style.width=(y/h*100)+"%";
+  hd.classList.toggle("s",y>30);top.classList.toggle("s",y>600);
+  let cur="home";secs.forEach(s=>{if(y+140>=s.offsetTop)cur=s.id});
+  $$(".links a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+cur&&!a.classList.contains("cta")));
+},{passive:true});
+
+// glow follows cursor
+addEventListener("pointermove",e=>{const g=$("#glow");g.style.left=e.clientX+"px";g.style.top=e.clientY+"px"},{passive:true});
+
+// typing
+const roles=["Aspiring Software Developer","Frontend Learner","UI/UX Explorer","Curious Problem-Solver"];
+let ri=0,ci=0,del=false;
+(function type(){
+  const w=roles[ri];$("#typed").textContent=w.slice(0,ci);
+  if(!del&&ci===w.length){del=true;return setTimeout(type,1600)}
+  if(del&&ci===0){del=false;ri=(ri+1)%roles.length}
+  ci+=del?-1:1;setTimeout(type,del?35:75);
+})();
+
+// reveal + counters
+const count=el=>{const n=+el.dataset.n,t=n>100?1400:900,s=performance.now();
+  (function f(now){const p=Math.min((now-s)/t,1);el.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(s)};
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;e.target.classList.add("vis");
+  e.target.querySelectorAll("[data-n]").forEach(count);io.unobserve(e.target);
+}),{threshold:.15});
+$$(".rv").forEach((el,i)=>{el.style.transitionDelay=(i%3)*90+"ms";io.observe(el)});
+
+// skill filter
+$("#tabs").onclick=e=>{
+  const b=e.target.closest(".tab");if(!b)return;
+  $$(".tab").forEach(t=>t.classList.toggle("on",t===b));
+  $$(".sk").forEach(c=>{const show=b.dataset.f==="all"||c.dataset.c===b.dataset.f;c.classList.toggle("h",!show);
+    if(show){c.classList.add("vis");c.style.transitionDelay="0ms"}});
+};
+
+// 3D tilt on cards (desktop pointers only)
+if(matchMedia("(hover:hover)").matches){
+  $$(".card").forEach(c=>{
+    c.addEventListener("pointermove",e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      c.style.transform=`perspective(800px) rotateX(${-y*6}deg) rotateY(${x*6}deg) translateY(-4px)`});
+    c.addEventListener("pointerleave",()=>c.style.transform="");
+  });
+}
+
+// contact form -> mailto
+$("#form").onsubmit=e=>{
+  e.preventDefault();
+  const b=encodeURIComponent(`${$("#fm").value}\n\n— ${$("#fn").value} (${$("#fe").value})`);
+  location.href=`mailto:${CONFIG.email}?subject=${encodeURIComponent("Portfolio message from "+$("#fn").value)}&body=${b}`;
+};
+</script>
+</body>
+</html>
